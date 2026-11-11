@@ -35,6 +35,19 @@ least 8.3%, more if the same slowdown applied to it.
 
 The rebuild takes about 1 h 45 min on the 9950X.
 
+### LLVM and clang built with clang, -O3 and ThinLTO
+
+Gentoo has no flag for it, so it's a `package.env` entry
+(`portage/env/optimzr-llvm-lto.conf`, `portage/package.env/optimzr-llvm`):
+clang as the compiler, `-O3 -flto=thin -march=native`, lld as the linker,
+16 jobs so the ThinLTO links fit in 32 GB. 20 minutes for llvm (64 + 32 bit)
+and clang on the 9950X.
+
+| kernel defconfig with clang (`LLVM=1`) | time |
+|---|---|
+| before | 74.38 s |
+| **after** | **70.40 s (70.36–70.43), −5.4%** |
+
 ### ccache
 
 ```
@@ -53,7 +66,6 @@ measurable cost. Default cache size 5 GB.
 | idea | why not |
 |---|---|
 | `-O3` globally | no system-wide gain to measure, and it breaks a few packages; kept per-package (`env/optimized.conf`) |
-| clang/LLVM PGO or LTO | Gentoo's LLVM ebuilds have no `pgo`/`lto` flag; a hand-rolled LTO link of LLVM needs more than 32 GB |
 | mold as the default linker | Portage builds aren't link-bound here, and some packages can't use it |
 | tmpfs `PORTAGE_TMPDIR` | chromium/llvm builds need 20+ GB of temp space, too much for 32 GB RAM; the NVMe isn't the bottleneck while compiling |
 

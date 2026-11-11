@@ -1,0 +1,2 @@
+llvm-core/llvm optimzr-llvm-lto.conf
+llvm-core/clang optimzr-llvm-lto.conf
