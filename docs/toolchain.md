@@ -20,7 +20,20 @@ compiler using the profile from building itself); `lto` links it with
 link-time optimisation. The compiler gets faster, the code it produces is the
 same. Measured with the kernel defconfig build from `bench/run.sh compile`:
 
-GCC_RESULT
+| | kernel defconfig, gcc | same build, clang (control) |
+|---|---|---|
+| before (GCC 16.2.1 plain) | 70.03 s (70.00–70.18) | 74.51 s |
+| **after (pgo + lto)** | **64.20 s (64.19–64.40), −8.3%** | 77.12 s (+3.5%) |
+
+The GCC build got 8.3% faster with three runs inside 0.2 s of each other.
+The clang build, which shouldn't have changed, got 3.5% slower. Ruled out:
+the `teo` idle governor (79.5 s under both `menu` and `teo`), optimzrd (79.6 s
+with it stopped), the it87 sensor driver (79.9 s unloaded). The one thing
+clang shares with the new GCC is `libstdc++.so.6`, which was rebuilt with it;
+that is the likely cause, not yet proven. Either way GCC's own gain is at
+least 8.3%, more if the same slowdown applied to it.
+
+The rebuild takes about 1 h 45 min on the 9950X.
 
 ### ccache
 
