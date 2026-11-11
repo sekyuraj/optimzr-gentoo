@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Gentoo Power Control
+Comment=Power level, network profile and live sensors
+Exec=optimzr-gui
+Icon=optimzr-gui
+Terminal=false
+Categories=System;Settings;
+Keywords=power;performance;cpu;gpu;fan;temperature;

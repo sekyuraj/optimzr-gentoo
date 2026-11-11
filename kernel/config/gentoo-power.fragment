@@ -1,0 +1,10 @@
+# gentoo-power changes on top of the 7.3.0-tux config (CachyOS + BORE, clang ThinLTO).
+# One option per line, applied with scripts/config. Every entry has a reason.
+
+# LOCALVERSION is set by build.sh: -gentoo-power-train without a profile,
+# -gentoo-power with one, so both can be installed side by side.
+--disable LOCALVERSION_AUTO
+
+# AutoFDO: profile-guided layout/inlining from real perf branch samples.
+# Without a profile this only adds discriminators to the debug info.
+--enable AUTOFDO_CLANG

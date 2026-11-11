@@ -1,0 +1,20 @@
+# downloads and build output
+bench/third_party/
+bench/bin/
+bench/work/
+build/
+kernel/build/
+kernel/src/
+*.o
+# raw logs can carry serials, IPs, hostnames: only summaries are published
+bench/results/*/logs/
+bench/results/*/env.txt
+bench/results/smoke/
+# machine-local lists (service names say a lot about a machine)
+root-helper/services.local
+bench/services.local
+bench/results/*/run.log
+bench/results/levels/logs/
+kernel/dl/
+kernel/profile/
+app/build/

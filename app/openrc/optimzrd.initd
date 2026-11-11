@@ -1,0 +1,15 @@
+#!/sbin/openrc-run
+# Gentoo Power Control daemon. Stopping it puts every setting it changed
+# back to what it was before.
+
+description="Gentoo Power Control (optimzrd)"
+command="/usr/local/sbin/optimzrd"
+command_args="-g ${OPTIMZR_GROUP:-optimzr}"
+command_background="yes"
+pidfile="/run/optimzrd.pid"
+retry="TERM/10/KILL/5"
+
+depend() {
+	need localmount
+	after modules net
+}

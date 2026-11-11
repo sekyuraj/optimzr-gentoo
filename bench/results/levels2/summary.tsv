@@ -1,0 +1,15 @@
+test	metric	value	unit	better	pkg_w	tctl_max	cpu_mhz
+L70a_idle	idle	1	x	higher	28.9	40.0	1029
+L70a_st	coremark_st	48618.426384	it/s	higher	35.4	39.6	1047
+L70a_mt	coremark_mt	1033703.025735	it/s	higher	126.9	55.6	4197
+L70a_rr	tcp_rr	262156	trans/s	higher	38.5	40.5	1519
+L70b_idle	idle	1	x	higher	28.6	39.5	1031
+L70b_st	coremark_st	50565.413257	it/s	higher	37.2	39.6	1114
+L70b_mt	coremark_mt	1081014.679688	it/s	higher	151.7	62.9	4510
+L70b_rr	tcp_rr	271705	trans/s	higher	39.6	43.1	1483
+idle_teo_idle	idle	1	x	higher	29.5	39.8	1022
+idle_teo_st	coremark_st	60079.742203	it/s	higher	50.2	46.6	1213
+idle_teo_rr	tcp_rr	384147	trans/s	higher	63.7	48.8	1637
+idle_menu_idle	idle	1	x	higher	29.4	39.2	1093
+idle_menu_st	coremark_st	59958.574076	it/s	higher	49.2	45.5	1206
+idle_menu_rr	tcp_rr	296275	trans/s	higher	61.1	45.0	1485

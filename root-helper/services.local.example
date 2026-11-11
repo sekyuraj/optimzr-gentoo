@@ -1,0 +1,2 @@
+# services optimzr-root may start/stop (for bench/run.sh), one per line
+caddy

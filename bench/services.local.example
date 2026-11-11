@@ -1,0 +1,2 @@
+# services bench/run.sh stops during a run, one per line
+caddy
