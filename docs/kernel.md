@@ -87,3 +87,30 @@ Then the pin is moved to it.
 
 `/etc/default/grub` is backed up by the helper before every change
 (`optimzr-root backups`, `optimzr-root restore <stamp> /etc/default/grub`).
+
+## Measured (2026-11-11)
+
+Same userspace settings on both (teo, BBR, GCC PGO). 7.3.0-tux: median of 3
+with services stopped. gentoo-power: one pass with services running, so if
+anything it's the harder test.
+
+| test | 7.3.0-tux | 7.3.3-gentoo-power | |
+|---|---|---|---|
+| TCP stream, loopback | 139 479 Mbit/s | 147 788 | +6.0% |
+| TCP_RR, loopback | 382 000 /s | 412 180 | +7.9% |
+| UDP_RR, loopback | 442 797 /s | 488 476 | +10.3% |
+| 4K random read QD1 | 18 539 IOPS | 26 720 | +44% |
+| 4K random read QD256 | 611 854 IOPS | 844 645 | +38% |
+| sequential read | 5 151 MB/s | 6 858 | +33% |
+| 4K random write QD128 | 193 439 IOPS | 181 403 | −6% |
+| sequential write | 1 811 MB/s | 1 393 | −23% |
+
+The writes are the DRAM-less SSD, not the kernel: its sequential write moved
+between 2 694 and 1 811 MB/s on the *same* kernel depending on how full its
+SLC cache was. The read path is where AutoFDO and 7.3.3 show (QD1 latency
+54 µs → 37 µs per I/O).
+
+The AutoFDO profile had 4.4 M branch samples; llvm-profgen suggests ~5×
+more would help further (`./profile.sh 300`).
+
+gentoo-power is now the GRUB default; 7.3.0-tux and 6.18.57 stay as fallbacks.

@@ -1,0 +1,10 @@
+test	metric	value	unit	better	pkg_w	tctl_max	cpu_mhz
+loopback	loopback_tcp_stream	139479	Mbit/s	higher	68.3	55.4	1716
+loopback	loopback_tcp_rr	382000	trans/s	higher	68.3	55.4	1716
+loopback	loopback_udp_rr	442797	trans/s	higher	68.3	55.1	1619
+fio	seq_write	1811	MB/s	higher	35.7	40.8	1622
+fio	seq_read	5151	MB/s	higher	35.7	40.8	1622
+fio	rand4k_read_qd1	18539	IOPS	higher	35.7	40.8	1622
+fio	rand4k_read_qd256	611854	IOPS	higher	35.7	40.8	1622
+fio	rand4k_write_qd128	193439	IOPS	higher	36.6	40.8	1678
+fio	seq_read_fragmented	468	MB/s	higher	36.6	40.8	1678

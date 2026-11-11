@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.0 (unreleased)
+## 0.1.0 (2026-11-11)
 
 - Benchmark suite (`bench/run.sh`): CPU, memory, compile, compression,
   storage, network, GPU, plus settings sweeps (`levels`, `idlegov`, `gpucap`,

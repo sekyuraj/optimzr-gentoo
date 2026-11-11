@@ -14,7 +14,8 @@ binaries before and after. "Stock" is [baseline.md](baseline.md).
 | GPU compute | 340 W power limit (level 100) | 22 962 GFLOPS | 23 204 | +1.1% |
 | package rebuilds | ccache | 15–18 s (zstd) | 6.0 s | 2.5× |
 | compiling with GCC | GCC built with PGO + LTO | 70.03 s kernel defconfig | 64.20 s | **−8.3%** |
-| kernel | gentoo-power (7.3.3, AutoFDO) | KERNEL_BEFORE | KERNEL_AFTER | KERNEL_DELTA |
+| kernel: network stack | gentoo-power (7.3.3, ThinLTO + AutoFDO) | 382 000 TCP_RR/s, 442 797 UDP_RR/s | 412 180, 488 476 | **+7.9%, +10.3%** |
+| kernel: storage reads | gentoo-power | 18 539 IOPS QD1, 611 854 QD256 | 26 720, 844 645 | **+44%, +38%** |
 
 ## What the power levels trade
 

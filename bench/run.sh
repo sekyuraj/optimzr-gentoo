@@ -257,6 +257,11 @@ t_loopback() {
     netperf -P 0 -H 127.0.0.1 -p 12866 -l 10 -t UDP_RR | awk 'NF>=6{printf "RESULT loopback_udp_rr %.0f trans/s higher\n", $6; exit}'
     pkill -f 'netserver -p 12866'
 }
+# what a kernel change can move: syscalls, scheduler, network stack, block layer
+suite_kernel() {
+    bench loopback t_loopback
+    suite_storage
+}
 suite_net() {
     bench lan t_lan
     bench wan t_wan

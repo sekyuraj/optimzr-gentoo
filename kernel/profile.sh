@@ -45,7 +45,11 @@ data=$out/perf-$(date +%Y%m%d-%H%M%S).data
 load() {
 	n=$(nproc)
 	if [ -d "$work/linux-7.3.3" ]; then
-		make -s -C "$work/linux-7.3.3" clean >/dev/null 2>&1 || true
+		k=$work/linux-7.3.3
+		make -s -C "$k" mrproper >/dev/null 2>&1
+		make -s -C "$k" defconfig >/dev/null 2>&1
+		"$k/scripts/config" --file "$k/.config" -d WERROR
+		make -s -C "$k" olddefconfig >/dev/null 2>&1
 		timeout "$secs" make -s -C "$work/linux-7.3.3" -j"$n" >/dev/null 2>&1 || true
 	fi
 	if command -v fio >/dev/null; then

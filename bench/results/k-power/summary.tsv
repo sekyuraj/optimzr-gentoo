@@ -1,0 +1,9 @@
+test	metric	value	unit	better
+loopback	loopback_tcp_stream	147788	Mbit/s	higher
+loopback	loopback_tcp_rr	412180	trans/s	higher
+loopback	loopback_udp_rr	488476	trans/s	higher
+fio	seq_write	1393	MB/s	higher
+fio	seq_read	6858	MB/s	higher
+fio	rand4k_read_qd1	26720	IOPS	higher
+fio	rand4k_read_qd256	844645	IOPS	higher
+fio	rand4k_write_qd128	181403	IOPS	higher
